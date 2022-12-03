@@ -7,6 +7,13 @@
     <title>Sign up</title>
 </head>
 <body>
-    
+    <div class="signup">
+        <h1>Create Account</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" name="Create User">
+        </form>
+    </div>
 </body>
 </html>
