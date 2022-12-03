@@ -7,15 +7,14 @@ states = (('AL', 'Alabama'), ('AK', 'Alaska'), ('AZ', 'Arizona'), ('AR', 'Arkans
 class Rider(models.Model):
     first = models.CharField(max_length=16)
     last = models.CharField(max_length=16)
+    email = models.CharField(max_length=100, default= '')
+    password = models.CharField(max_length=16, default='')
     sex = models.CharField(max_length=7)
     age = models.IntegerField()
     
     def __str__(self):
         return self.first + ' ' + self.last
 
-riders = ()
-for i in Rider.objects.all():
-    riders = riders + ((i, i.first),)
 
 class Race(models.Model):
     name = models.CharField(default= "",max_length=24)
