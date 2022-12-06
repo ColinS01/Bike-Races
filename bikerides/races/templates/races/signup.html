@@ -1,18 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'races/signup.css' %}">
     <title>Sign up</title>
 </head>
 <body>
     <div class="signup">
-        <h1>Create Account</h1>
         <form method="POST" action="">
+            <h1>Create Account</h1>
+
             {% csrf_token %}
-            {{form}}
-            <input type="submit" name="Create User">
+            {% for field in form %}
+                <h3>{{field.label}}</h3>
+                {{field}}
+            {% endfor %}
+            <p><input type="submit" name="Create User"></p>
+            <p>Already have an account... <a href="/loginPage/">login</a></p>
+            {% if messages %} 
+            <ul>
+                {% for message in messages %}
+                    <li>{{message}}</li>
+                {% endfor %} 
+            </ul>
+            {% endif %} 
         </form>
     </div>
 </body>

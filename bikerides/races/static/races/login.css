@@ -1,0 +1,36 @@
+body {
+    font-family: Verdana;
+}
+
+input {
+    padding: 8px;
+    margin: none;
+    border: 2px;
+    border-radius: 8px;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+form {
+    padding: 24px;
+    border-radius: 8px;
+    background-color: #8adeff;
+}
+
+h1 {
+    background-color: #e6e6e6;
+    border-radius: 8px;
+    padding: 4px;
+    
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(0, 177, 0);
+    transition: .25s;
+}
