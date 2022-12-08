@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block script %} {% endblock %}
+    <title>Document</title>
+</head>
+<header>
+    <nav>
+        <h1>Race Reg</h1>
+        <div class="items">
+            <li>
+                <ul><a href="/create/">Create Race</a></ul>
+                <ul><a href="/seeraces/">View Races</a></ul>
+                <ul><a href="/myraces/">My Races</a></ul>
+            </li>
+        </div>
+    </nav>
+</header>
+<body>
+    {% block content %} {% endblock %}
+</body>
+</html>

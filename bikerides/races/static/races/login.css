@@ -1,3 +1,7 @@
+* {
+    margin: none;
+    background-color: grey;
+}
 body {
     font-family: Verdana;
 }
@@ -7,6 +11,7 @@ input {
     margin: none;
     border: 2px;
     border-radius: 8px;
+    background-color: white;
 }
 
 .login {
@@ -19,7 +24,7 @@ input {
 
 form {
     padding: 24px;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: #8adeff;
 }
 
@@ -33,4 +38,8 @@ h1 {
 input[type="submit"]:hover {
     background-color: rgb(0, 177, 0);
     transition: .25s;
+}
+
+h3, h1, p, a {
+    background-color: transparent;
 }

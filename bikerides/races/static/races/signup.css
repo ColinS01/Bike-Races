@@ -1,3 +1,7 @@
+* {
+    margin: none;
+    background-color: rgb(187, 180, 180);
+}
 body {
     font-family: Verdana;
 }
@@ -7,6 +11,7 @@ input {
     margin: none;
     border: 2px;
     border-radius: 8px;
+    background-color: white;
 }
 
 .signup {
@@ -20,7 +25,7 @@ input {
 form {
     padding-left: 24px;
     padding-right: 24px;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: #8adeff;
 }
 
@@ -29,6 +34,10 @@ h1 {
     border-radius: 8px;
     padding: 4px;
     
+}
+
+h3, h1, p, a {
+    background-color: transparent;
 }
 
 input[type="submit"]:hover {

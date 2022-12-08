@@ -1,0 +1,12 @@
+{% extends "races/base.html" %}
+{% block script %} 
+    <link rel="stylesheet" href="">
+{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    {% for field in form %}
+        <h3>{{field.label}}</h3>
+        {{field}}
+    {% endfor %}
+    <input type="submit">
+{% endblock %}

@@ -12,9 +12,11 @@
     <div class="login">
         <form action="" method="POST">
             <h1>Login</h1>
-            <input type="text" name="email" placeholder="Email...">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username...">
             <input type="password" name="password" placeholder="Password...">
             <input type="submit">
+            <p>Don't have an account... <a href="/signup/">Signup</a></p>
         </form>
     </div>
 </body>

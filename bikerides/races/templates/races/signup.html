@@ -12,14 +12,13 @@
     <div class="signup">
         <form method="POST" action="">
             <h1>Create Account</h1>
-
             {% csrf_token %}
             {% for field in form %}
                 <h3>{{field.label}}</h3>
                 {{field}}
             {% endfor %}
             <p><input type="submit" name="Create User"></p>
-            <p>Already have an account... <a href="/loginPage/">login</a></p>
+            <p>Already have an account... <a href="/login/">login</a></p>
             {% if messages %} 
             <ul>
                 {% for message in messages %}
