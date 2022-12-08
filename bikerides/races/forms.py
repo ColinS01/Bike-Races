@@ -12,4 +12,4 @@ class CreatUserForm(UserCreationForm):
 class CreateRaceForm(ModelForm):
     class Meta:
         model = Race
-        fields = ['name', 'city', 'state', 'distance', 'date', 'time']
+        fields = ['name', 'state', 'city', 'distance', 'date', 'time']

@@ -11,8 +11,8 @@ states = (('AL', 'Alabama'), ('AK', 'Alaska'), ('AZ', 'Arizona'), ('AR', 'Arkans
 
 class Race(models.Model):
     name = models.CharField(default= "",max_length=24)
-    city = models.CharField(max_length=16)
     state = models.CharField(max_length=16, choices=states)
+    city = models.CharField(max_length=16)
     distance = models.IntegerField()
     discipline = models.CharField(max_length=6,choices=(('Gravel', 'Gravel'), ('Road', 'Road'), ('MTB', 'MTB')))
     date = models.DateField()

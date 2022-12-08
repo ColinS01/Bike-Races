@@ -1,12 +1,17 @@
 {% extends "races/base.html" %}
+{% load static %}t
 {% block script %} 
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'races/newrace.css' %}">
 {% endblock %}
 {% block content %}
     {% csrf_token %}
-    {% for field in form %}
-        <h3>{{field.label}}</h3>
-        {{field}}
-    {% endfor %}
-    <input type="submit">
+    <div class="race-form">
+        {% for field in form %}
+            <h3>{{field.label}}</h3>
+            <div class="field">
+                {{field}}
+            </div>
+        {% endfor %}
+        <input type="submit">
+    </div>
 {% endblock %}
