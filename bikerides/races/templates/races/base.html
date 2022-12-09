@@ -9,12 +9,18 @@
 </head>
 <header>
     <nav class="navbar">
-        <h1>Race Reg</h1>
+        <h1 class="title"> <a href="/home/">Race Reg</a></h1>
         <li class="item-list">
             <ul><a class="list-link" href="/create/">Create Race</a></ul>
             <ul><a class="list-link" href="/seeraces/">View Races</a></ul>
             <ul><a class="list-link" href="/myraces/">My Races</a></ul>
         </li>
+        {% if request.user.username == ""%}
+            <h3 class="login-signup"><a href="/login/">Login</a></h3>
+            <h3 class="login-signup"><a href="/signup/">Sign Up</a></h3>
+        {% else %}
+            <h3 class="login-signup"> Hello, {{request.user.username}}!</h3>
+        {% endif %}
     </nav>
 </header>
 <body>
