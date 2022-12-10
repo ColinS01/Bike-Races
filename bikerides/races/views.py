@@ -1,9 +1,7 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
@@ -24,7 +22,7 @@ def sign_up(request):
             form.save()
             return HttpResponseRedirect('/login/')
         else:
-            messages.error(request, 'Email already in use')
+            messages.error(request, 'Email or Username already in use')
             
     context = {'form':form}
     return render(request, 'races/signup.html', context)
@@ -47,6 +45,9 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/login/')
+
+def friends(request):
+    return render(request, 'races/friends.html')
     
 
 def create_race(request):

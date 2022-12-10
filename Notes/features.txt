@@ -1,7 +1,0 @@
-create a race page:
-    -
-
-view races:
-    -have tab for hosted races
-    -have tab for participating races
-    

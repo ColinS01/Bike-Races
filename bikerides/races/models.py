@@ -2,7 +2,7 @@ from django.db import models
 from django.forms import ModelForm
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 
 # Create your models here.
@@ -21,3 +21,7 @@ class Race(models.Model):
     def __str__(self):
         return self.name
 
+class MyUser(AbstractUser):
+    email = models.EmailField(verbose_name= 'email address', max_length=64, unique=True)
+    username = models.CharField(max_length=16, unique=True)
+    friends = models.ManyToManyField('MyUser', blank=True)
