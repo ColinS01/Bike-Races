@@ -46,6 +46,19 @@ def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/login/')
 
+def sendFriendRequest(request, userID):
+    from_user = request.user
+    to_user = User.objects.get(id=userID)
+    friendRequest, created = FriendRequest.objects.get_or_create(from_user=from_user, to_user=to_user)
+    if created:
+        messages.info(request, 'Friend Request Sent')
+    else:
+        messages.info(request, 'Friend Request Already Sent')
+
+def acceptFreindRequest(request, requestID):
+    friendRequest = FriendRequest.objects.get(id=requestID)
+    # https://medium.com/analytics-vidhya/add-friends-with-689a2fa4e41d to finish friend system
+
 def friends(request):
     return render(request, 'races/friends.html')
     

@@ -25,3 +25,9 @@ class MyUser(AbstractUser):
     email = models.EmailField(verbose_name= 'email address', max_length=64, unique=True)
     username = models.CharField(max_length=16, unique=True)
     friends = models.ManyToManyField('MyUser', blank=True)
+
+class FriendRequest(models.Model):
+    from_user = models.ForeignKey(MyUser, related_name='from_user', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(MyUser, related_name='to_user', on_delete=models.CASCADE)
+
+
