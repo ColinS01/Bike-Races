@@ -4,14 +4,21 @@
     <link rel="stylesheet" href="{% static 'races/newrace.css' %}">
 {% endblock %}
 {% block content %}
-    {% csrf_token %}
     <div class="race_form">
-        {% for field in form %}
-            <h3 class="field_label">{{field.label}}</h3>
-            <div class="field">
-                {{field}}
-            </div>
-        {% endfor %}
-        <input type="submit">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <h3 class="field_label">{{field.label}}</h3>
+                <div class="field">
+                    {{field}}
+                </div>
+            {% endfor %}
+            <input class="submit_button" type="submit">
+            <ul>
+                {% for message in messages %}
+                    <li class="info">{{message}}</li>
+                {% endfor %} 
+            </ul>
+        </form>
     </div>
 {% endblock %}

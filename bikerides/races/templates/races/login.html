@@ -17,6 +17,11 @@
             <input type="password" name="password" placeholder="Password...">
             <input type="submit">
             <p>Don't have an account... <a href="/signup/">Signup</a></p>
+            <ul>
+                {% for message in messages %}
+                    <li class="info">{{message}}</li>
+                {% endfor %} 
+            </ul>
         </form>
     </div>
 </body>

@@ -55,6 +55,12 @@ def create_race(request):
         
         if form.is_valid():
             form.save()
+            form = CreateRaceForm()
+            messages.info(request, 'Race Successfully Created!')
+
+        else:
+            messages.info(request, 'Race name already exists')
+
             
     context = {'form':form}
     return render(request, 'races/newrace.html', context)

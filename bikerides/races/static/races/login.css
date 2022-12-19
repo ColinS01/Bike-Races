@@ -42,3 +42,10 @@ input[type="submit"]:hover {
 h3, h1, p, a {
     background-color: transparent;
 }
+
+
+.info {
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+}

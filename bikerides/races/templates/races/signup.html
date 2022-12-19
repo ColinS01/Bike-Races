@@ -18,11 +18,11 @@
                 {{field}}
             {% endfor %}
             <p><input type="submit" name="Create User"></p>
-            <p>Already have an account... <a href="/login/">login</a></p>
+            <p class="info">Already have an account... <a href="/login/">login</a></p>
             {% if messages %} 
             <ul>
                 {% for message in messages %}
-                    <li>{{message}}</li>
+                    <li class="info">{{message}}</li>
                 {% endfor %} 
             </ul>
             {% endif %} 

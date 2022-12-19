@@ -44,3 +44,9 @@ input[type="submit"]:hover {
     transition: .25s;
 }
 
+
+.info {
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+}
