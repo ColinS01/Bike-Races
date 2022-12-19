@@ -5,9 +5,9 @@
 {% endblock %}
 {% block content %}
     {% csrf_token %}
-    <div class="race-form">
+    <div class="race_form">
         {% for field in form %}
-            <h3>{{field.label}}</h3>
+            <h3 class="field_label">{{field.label}}</h3>
             <div class="field">
                 {{field}}
             </div>

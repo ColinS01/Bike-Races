@@ -4,9 +4,11 @@
     <link rel="stylesheet" href="{% static 'races/friends.css' %}">
 {% endblock %}
 {% block content %}
-    <ul class="all_users">
-        {% for user in allusers %} 
-            {% if not user.is_superuser %} 
+<div class="content">
+    <h1 class="friends_title">Friends to add</h1>
+    <p>Warning: Friendships are perminent</p>
+        <ul class="all_users">
+            {% for user in allusers %} 
                 {% if user not in request.user.friends.all and user != request.user %} 
                     <h3 class="user_tag">
                         {{user}}
@@ -15,7 +17,32 @@
                         </button>
                     </h3>
                 {% endif %} 
+            {% endfor %} 
+        </ul>
+
+    <h1 class="friends_title">Friend Requests</h1>
+        <ul class="all_users">
+            {% for request in requests %}
+            <h3 class="user_tag">
+                {{request.from_user}}
+                <button class="add-button">
+                    <a href="{% url 'accept friend request' request.id %}">Accept</a>
+                </button>
+            </h3>
+
+            {% empty %} 
+                <p class="no_requests">No Requests</p>
+    
+            {% endfor %}
+        </ul>
+
+    <h1 class="friends_title">Friends</h1>
+    <ul class="all_users">
+        {% for user in allusers %}
+            {% if user in request.user.friends.all and user != request.user %}
+            <h3 class="user_tag">{{user}}</h3>
             {% endif %} 
         {% endfor %} 
     </ul>
+</div>
 {% endblock %}

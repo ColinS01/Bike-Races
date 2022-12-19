@@ -71,17 +71,19 @@ def accept_friend_request(request, id):
     user2 = friend_request.from_user
     user1.friends.add(user2)
     user2.friends.add(user1)
+    friend_request.delete()
     return HttpResponseRedirect('/friends/')
     
 
 def friends(request):
     allusers = MyUser.objects.exclude(username = request.user)
-    friend = FriendRequest.objects.filter(to_user = request.user)
+    requests = FriendRequest.objects.filter(to_user = request.user)
     return render(request, 'races/friends.html', 
                   {
                       'allusers':allusers,
-                      'friend':friend
+                      'requests': requests
                   })
+
 
 def see_races(request):
     return render(request, 'races/seeraces.html')

@@ -21,6 +21,7 @@ class Race(models.Model):
     def __str__(self):
         return self.name
 
+
 class MyUser(AbstractUser):
     email = models.EmailField(verbose_name= 'email address', max_length=64, unique=True)
     username = models.CharField(max_length=16, unique=True)
