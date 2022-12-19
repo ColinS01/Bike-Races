@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Race, MyUser 
+from .models import Race, MyUser
 from .forms import UserCreationForm, UserChangeForm
 from django.contrib import admin
 from django.contrib.auth import get_user_model
@@ -10,7 +10,7 @@ class MyUserAdmin(UserAdmin):
     form = UserChangeForm
     model = MyUser
     list_display = ['username', 'email', 'password']
- 
+    
 admin.site.register(MyUser, MyUserAdmin)
 admin.site.register(Race)
 

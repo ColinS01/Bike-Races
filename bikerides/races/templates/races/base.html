@@ -18,7 +18,14 @@
         {% if request.user.username == ""%}
             <h3 class="login-signup"><a href="/signup/">Sign Up</a></h3>
         {% else %}
-            <h3 class="login-signup"> <a href="/friends/">Hello, {{request.user.username}}!</a></h3>
+        <div class="dropdown">
+            <button class="dropbtn"> Hi, {{ request.user.username }}!</button>
+            <div class="dropdown-content">
+            <a href="/profile/">Profile</a>
+            <a href="/friends/">Friends</a>
+            <a href="/logout/">Logout</a>
+            </div>
+        </div>
         {% endif %}
     </nav>
 </header>

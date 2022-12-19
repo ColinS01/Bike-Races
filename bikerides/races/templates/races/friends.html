@@ -4,5 +4,18 @@
     <link rel="stylesheet" href="{% static 'races/friends.css' %}">
 {% endblock %}
 {% block content %}
-    
+    <ul class="all_users">
+        {% for user in allusers %} 
+            {% if not user.is_superuser %} 
+                {% if user not in request.user.friends.all and user != request.user %} 
+                    <h3 class="user_tag">
+                        {{user}}
+                        <button class="add_button">
+                            <a href="{% url 'send friend request' user.id %}">+</a>
+                        </button>
+                    </h3>
+                {% endif %} 
+            {% endif %} 
+        {% endfor %} 
+    </ul>
 {% endblock %}

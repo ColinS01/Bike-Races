@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'races.MyUser'
 
+DEBUG_PROPEGATE_EXCEPTIONS = True
+
 # Application definition
 
 INSTALLED_APPS = [

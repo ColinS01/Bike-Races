@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import *
 from .forms import *
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -46,23 +47,6 @@ def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/login/')
 
-def sendFriendRequest(request, userID):
-    from_user = request.user
-    to_user = User.objects.get(id=userID)
-    friendRequest, created = FriendRequest.objects.get_or_create(from_user=from_user, to_user=to_user)
-    if created:
-        messages.info(request, 'Friend Request Sent')
-    else:
-        messages.info(request, 'Friend Request Already Sent')
-
-def acceptFreindRequest(request, requestID):
-    friendRequest = FriendRequest.objects.get(id=requestID)
-    # https://medium.com/analytics-vidhya/add-friends-with-689a2fa4e41d to finish friend system
-
-def friends(request):
-    return render(request, 'races/friends.html')
-    
-
 def create_race(request):
     form = CreateRaceForm()
 
@@ -75,8 +59,32 @@ def create_race(request):
     context = {'form':form}
     return render(request, 'races/newrace.html', context)
 
+def send_friend_request(request, id):
+    from_user = request.user
+    to_user = MyUser.objects.get(id=id)
+    friend_requests = FriendRequest.objects.get_or_create(from_user=from_user, to_user=to_user)
+    return HttpResponseRedirect('/friends/')
+
+def accept_friend_request(request, id):
+    friend_request = FriendRequest.objects.get(id=id)
+    user1 = request.user
+    user2 = friend_request.from_user
+    user1.friends.add(user2)
+    user2.friends.add(user1)
+    return HttpResponseRedirect('/friends/')
+    
+
+def friends(request):
+    allusers = MyUser.objects.exclude(username = request.user)
+    friend = FriendRequest.objects.filter(to_user = request.user)
+    return render(request, 'races/friends.html', 
+                  {
+                      'allusers':allusers,
+                      'friend':friend
+                  })
+
 def see_races(request):
-    pass
+    return render(request, 'races/seeraces.html')
 
 def register(request):
     pass
