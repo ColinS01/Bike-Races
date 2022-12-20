@@ -24,6 +24,8 @@ def sign_up(request):
             return HttpResponseRedirect('/login/')
         else:
             messages.error(request, 'Email or Username already in use')
+            messages.error(request, 'Passwords may not match')
+            messages.error(request, 'Try Again Please!')
             
     context = {'form':form}
     return render(request, 'races/signup.html', context)
@@ -49,12 +51,13 @@ def logoutUser(request):
 
 def create_race(request):
     form = CreateRaceForm()
-
+    user = request.user
     if request.method == 'POST':
         form = CreateRaceForm(request.POST)
         
         if form.is_valid():
             form.save()
+            user.owned_races.add()
             form = CreateRaceForm()
             messages.info(request, 'Race Successfully Created!')
 
@@ -92,7 +95,16 @@ def friends(request):
 
 
 def see_races(request):
-    return render(request, 'races/seeraces.html')
+    races = Race.objects.get_queryset()
+    return render(request, 'races/seeraces.html', {
+        'races': races
+    })
+    
+def view_race(request, race):
+    return render(request, 'races/race.html')
+
+def view_participants(request, race):
+    return render(request, 'races/participants.html')
 
 def register(request):
     pass

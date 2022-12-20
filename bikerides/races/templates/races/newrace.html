@@ -19,6 +19,11 @@
                     <li class="info">{{message}}</li>
                 {% endfor %} 
             </ul>
+            <ul>
+                {% for races in request.user.owned_races.name %} 
+                    <li>{{race.name}}</li>
+                {% endfor %}
+            </ul>
         </form>
     </div>
 {% endblock %}

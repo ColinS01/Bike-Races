@@ -1,0 +1,32 @@
+{% extends "races/base.html" %}
+{% load static %}t
+{% block script %} 
+    <link rel="stylesheet" href="{% static 'races/seeraces.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <table>
+            {% for race in races|dictsort:"name"  %} 
+                <tr class="race">
+                    <td class="race_item">
+                        <h1>
+                            <a href="{% url 'view race' race.name %}">{{race.name}}</a>
+                        </h1>
+                    </td>
+                    <td class="race_item">
+                        {{race.date}} @ {{race.time}}
+                    </td>
+                    <td class="race_item">
+                        {{race.city}}, {{race.state}}
+                    </td>
+                    <td class="race_item">
+                        {{race.distance}} miles on {{race.discipline}}
+                    </td>
+                    <td>
+                        <a class="participants" href="{% url 'view participants' race.name %}">participants</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

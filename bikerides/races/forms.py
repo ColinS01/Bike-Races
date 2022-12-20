@@ -16,4 +16,4 @@ class UserChangeForm(UserChangeForm):
 class CreateRaceForm(ModelForm):
     class Meta:
         model = Race
-        fields = ['name', 'state', 'city', 'distance', 'discipline', 'date', 'time']
+        fields = ['name', 'state', 'city', 'distance', 'discipline', 'date', 'time', 'owner']
